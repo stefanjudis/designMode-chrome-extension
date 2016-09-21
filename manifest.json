@@ -4,8 +4,7 @@
   "description": "Tiny helper to enable document.designMode",
   "version": "1.0",
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "scripts": ["background.js"]
   },
   "content_scripts": [{
     "matches": ["http://*/*", "https://*/*"],

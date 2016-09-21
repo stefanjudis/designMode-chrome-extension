@@ -11,7 +11,7 @@ function updateBrowserAction( designMode ) {
 }
 
 function toggleDesignMode() {
-  chrome.tabs.query({ active : true }, tabs => {
+  chrome.tabs.query({ active : true, currentWindow : true }, tabs => {
     chrome.tabs.sendMessage(
       tabs[ 0 ].id,
       { text: 'toggle_designMode' },
@@ -25,7 +25,6 @@ function handleTabUpdate( tabId ) {
     tabId,
     { text: 'report_designMode' },
     designMode => {
-      console.log( designMode );
       if ( designMode ) {
         chrome.browserAction.enable( tabId );
         updateBrowserAction( designMode );

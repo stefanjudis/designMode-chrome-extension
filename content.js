@@ -35,7 +35,7 @@ function getNotifierElement() {
 
 
   Object.assign( notifier.style, {
-    padding                : '8px',
+    padding                : '6px',
     position               : 'fixed',
     width                  : 'auto',
     background             : 'rgba( 255, 255, 255, .925 )',
