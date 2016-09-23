@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "DesignMode",
   "description": "Tiny helper to enable document.designMode",
-  "version": "1.0",
+  "version": "1.1",
   "background": {
     "scripts": ["background.js"]
   },

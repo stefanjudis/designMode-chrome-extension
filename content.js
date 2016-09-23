@@ -12,6 +12,31 @@ chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
 });
 
 let notifier;
+let style;
+
+function toggleNotifier( designMode ) {
+  if ( ! notifier ) {
+    notifier = getNotifierElement();
+    document.body.appendChild(notifier);
+  }
+
+  if ( designMode === 'on' ) {
+    notifier.style.display = 'block';
+
+    style = document.createElement( 'style' );
+    style.textContent = `
+      input[type="button"], input[type="submit"], input[type="reset"], select, button, a { pointer-events: none; }
+    `;
+    document.head.appendChild( style );
+  } else {
+    notifier.style.display = 'none';
+
+    if ( style ) {
+      document.head.removeChild( style );
+      style = null;
+    }
+  }
+}
 
 function getNotifierElement() {
   const notifier = document.createElement( 'div' );
@@ -47,17 +72,4 @@ function getNotifierElement() {
   });
 
   return notifier;
-}
-
-function toggleNotifier( designMode ) {
-  if ( ! notifier ) {
-    notifier = getNotifierElement();
-    document.body.appendChild(notifier);
-  }
-
-  if ( designMode === 'on' ) {
-    notifier.style.display = 'block';
-  } else {
-    notifier.style.display = 'none';
-  }
 }
